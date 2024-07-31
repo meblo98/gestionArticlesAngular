@@ -1,1 +1,21 @@
-<p>article-detail works!</p>
+<!-- <h2>{{ article.title }}</h2>
+<p>{{ article.body }}</p>
+<a [routerLink]="['/edit-article', article.id]">Edit</a> -->
+<div id="parallax-wrapper">
+  <section>
+    <div class="title">
+      <hgroup>
+      <h1>Bienvenu dans le detail de nos articles</h1>
+      </hgroup>
+    </div>
+  </section>
+  <section>
+    <div class="p-one parallax-inner">
+      <h2>{{ article?.title }}</h2>
+    </div>
+  </section>
+  <div class="content-text">
+    <p><span class="first-letter red">T</span>
+      {{ article?.body }}</p>
+      <a [routerLink]="['/edit-article', article?.id]">Modifier</a>
+     </div>
