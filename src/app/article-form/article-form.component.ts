@@ -34,7 +34,9 @@ export class ArticleFormComponent implements OnInit {
     if (this.articleId) {
       this.isEditMode = true;
       this.articleService.getArticle(this.articleId).subscribe(data => {
-        this.articleForm.patchValue(data);
+        if (data) {
+          this.articleForm.patchValue(data);
+        }
       });
     }
   }
@@ -44,12 +46,12 @@ export class ArticleFormComponent implements OnInit {
       const article: Article = this.articleForm.value;
       if (this.isEditMode && this.articleId !== undefined) {
         this.articleService.updateArticle(this.articleId, article).subscribe(() => {
-          alert('Article modifier avec succés!');
+          alert('Article updated successfully!');
           this.router.navigate(['/']);
         });
       } else {
-        this.articleService.createArticle(article).subscribe(() => {
-          alert('Article crée avec succés!');
+        this.articleService.createArticle(article).subscribe(newArticle => {
+          alert('Article created successfully!');
           this.router.navigate(['/']);
         });
       }

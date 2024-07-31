@@ -68,3 +68,8 @@ section .title{
   padding-right: 8px;
   padding-left: 4px;
 }
+.line-break{
+  border-bottom: 1px solid #bf2d33;
+  width: 200px;
+  margin: 0 auto;
+}
