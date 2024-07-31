@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Article } from './article.model';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -8,26 +10,71 @@ const API_URL = 'https://jsonplaceholder.typicode.com/posts';
   providedIn: 'root'
 })
 export class ArticleService {
+  private articles: Article[] = [];
 
   constructor(private http: HttpClient) { }
 
-  getArticles(): Observable<any> {
-    return this.http.get(API_URL);
+  fetchArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(API_URL).pipe(
+      map((data: Article[]) => {
+        this.articles = data;
+        return this.articles;
+      })
+    );
   }
 
-  getArticle(id: number): Observable<any> {
-    return this.http.get(`${API_URL}/${id}`);
+  getArticles(): Observable<Article[]> {
+    if (this.articles.length > 0) {
+      return of(this.articles);
+    } else {
+      return this.fetchArticles();
+    }
   }
 
-  createArticle(article: any): Observable<any> {
-    return this.http.post(API_URL, article);
+  getArticle(id: number): Observable<Article> {
+    const article = this.articles.find(article => article.id === id);
+    if (article) {
+      return of(article);
+    } else {
+      return this.http.get<Article>(`${API_URL}/${id}`).pipe(
+        map(data => {
+          if (data) {
+            this.articles.push(data);
+          }
+          return data;
+        })
+      );
+    }
   }
 
-  updateArticle(id: number, article: any): Observable<any> {
-    return this.http.put(`${API_URL}/${id}`, article);
+  createArticle(article: Article): Observable<Article> {
+    return this.http.post<Article>(API_URL, article).pipe(
+      map(newArticle => {
+        if (newArticle) {
+          this.articles.push(newArticle);
+        }
+        return newArticle;
+      })
+    );
   }
 
-  deleteArticle(id: number): Observable<any> {
-    return this.http.delete(`${API_URL}/${id}`);
+  updateArticle(id: number, article: Article): Observable<Article> {
+    return this.http.put<Article>(`${API_URL}/${id}`, article).pipe(
+      map(updatedArticle => {
+        const index = this.articles.findIndex(article => article.id === id);
+        if (index !== -1) {
+          this.articles[index] = updatedArticle;
+        }
+        return updatedArticle;
+      })
+    );
+  }
+
+  deleteArticle(id: number): Observable<void> {
+    return this.http.delete<void>(`${API_URL}/${id}`).pipe(
+      map(() => {
+        this.articles = this.articles.filter(article => article.id !== id);
+      })
+    );
   }
 }

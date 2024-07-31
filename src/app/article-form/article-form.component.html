@@ -1,1 +1,17 @@
-<p>article-form works!</p>
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title</label>
+    <input id="title" formControlName="title">
+    <div *ngIf="articleForm.controls['title'].invalid && (articleForm.controls['title'].dirty || articleForm.controls['title'].touched)">
+      Title is required
+    </div>
+  </div>
+  <div>
+    <label for="body">Body</label>
+    <textarea id="body" formControlName="body"></textarea>
+    <div *ngIf="articleForm.controls['body'].invalid && (articleForm.controls['body'].dirty || articleForm.controls['body'].touched)">
+      Body is required
+    </div>
+  </div>
+  <button type="submit" [disabled]="articleForm.invalid">{{ isEditMode ? 'Modifier' : 'Ajouter' }} Article</button>
+</form>
