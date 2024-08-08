@@ -1,70 +1,81 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Arimo', sans-serif;
+.card {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  background-color: white;
+  width: 1300px;
+  height: auto;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),
+  0 2px 4px -2px rgba(0,0,0,.1);
 }
-.p-one{
-  background-image:  linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://s-media-cache-ak0.pinimg.com/originals/27/05/74/2705741f272606db11ac1ae9938f2e93.jpg');
- }
- .p-two{
-  background-image:  linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('http://yourshot.nationalgeographic.com/u/fQYSUbVfts-T7odkrFJckdiFeHvab0GWOfzhj7tYdC0uglagsDUfLlPgrXBmpl47L_loRqvjQAF8rf0zUosTGvin-6e78q5sfCcVX3bmVTMIIXO6Tip6RwcEifpvaUYLqZqeb_QXL_hMs0S2-KyKQmlkXBgPl8cmV7EfviKXmGBHSzVSBO6vID7z-6vseqDbm-vjCRptb-cHr6DG_Fw5ZrX16ipWhA/');
- }
- .p-three{
-  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('http://yourshot.nationalgeographic.com/u/fQYSUbVfts-T7odkrFJckdiFeHvab0GWOfzhj7tYdC0uglagsDYhq4Ex8s5iidtN2D-gsq8R6I9UvklI2CBfS-FrbCGDzSvH4NAUkD_8qN1OoS2Rbse4v-v8EG0PNP7o3MEKhYPjgh9ctRu0tobfXYMjJtRn13-BIYRDxf-GqgJyeRjwEOM-G5Z93u60vJ1-0Rgw1R1PtW2SmuoYi7z7Eg/');
- }
- .p-four{
-   background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('http://yourshot.nationalgeographic.com/u/fQYSUbVfts-T7odkrFJckdiFeHvab0GWOfzhj7tYdC0uglagsDcYmE3RitDZn-Yii57x4-5jsHdUxHDMvdLBnj3tfIm1zfzl-yw2G7ANtLSxm2lLwOXVxqJtvDa0ROT0ZaPWLVHzHRbs0cNFiz9YNSaJvYYdELBDYSF_b32fGuTBEu8iX4XGFR7_TBXQ_bSK1N-C5HLTv6gXe4Vp9CadyYOz88E/');
- }
- .parallax-inner{
-   position:relative;
-   min-height: 500px;
-   background-position: top center;
-   background-attachment: fixed;
-   background-size: cover;
- }
- .parallax-inner > h2{
-   color: #fff;
-   text-transform: uppercase;
-   letter-spacing: 10px;
-   position: absolute;
-   top: 50%;
-   left: 0;
-   margin-top: -20.5px;
-   width: 100%;
-   text-align: center;
- }
-section:first-child{
+
+.header {
+  padding: 1.5rem;
+  text-align: center;
+  color: aliceblue;
   position: relative;
-  height:100px;
+  background-clip: border-box;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.75rem;
+  background-color: rgb(33 150 243);
+  box-shadow: 0 10px 15px -3px rgba(33,150,243,.4),0 4px 6px -4px rgba(33,150,243,.4);
+  height: 14rem;
 }
-section .title{
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  margin-top:-35.5px;
-  /* margin-left: -91.4px; */
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 5px;
+
+.info {
+  border: none;
+  padding: 1.5rem;
+  text-align: center;
 }
-.title h1,h2{
-  font-size:20px;
-  font-weight:100;
-  letter-spacing: 5px;
-  margin-left: 13px;
+
+.title {
+  color: rgb(38 50 56);
+  letter-spacing: 0;
+  line-height: 1.375;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
-.content-text p{
-  padding: 25px 50px 25px 50px;
-  font-weight: 400;
-  text-align: justify;
-  line-height: 24px;
+
+.footer {
+  padding: 0.75rem;
+  border: 1px solid rgb(236 239 241);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 140, 255, 0.082);
 }
-.first-letter{
-  float: left;
-  font-weight: 400;
-  font-size: 84px;
-  line-height: 64px;
-  padding-top: 2px;
-  padding-right: 8px;
-  padding-left: 4px;
+
+.tag {
+  font-weight: 300;
+  font-size: .75rem;
+  display: block;
+}
+
+.action {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px -1px rgba(33,150,243,.4),0 2px 4px -2px rgba(33,150,243,.4);
+  color: rgb(255 255 255);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(4, 11, 17);
+  border-radius: 0.5rem;
+  margin-top: 20px;
+}
+
+a
+{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+
 }

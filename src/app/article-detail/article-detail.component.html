@@ -1,11 +1,30 @@
 <!-- <h2>{{ article.title }}</h2>
 <p>{{ article.body }}</p>
 <a [routerLink]="['/edit-article', article.id]">Edit</a> -->
-<div id="parallax-wrapper">
+<div class="card">
+  <div class="header">
+    <p class="title">{{ article?.title }}</p>
+    <p>{{ article?.body }} </p>
+    <button type="button" class="action"> <a [routerLink]="['/edit-article', article?.id]">Modifier</a></button>
+  </div>
+  <div class="info">
+    <p class="title">Commentaires</p>
+    <div *ngFor="let comment of comments">
+      <h4>Titre: {{ comment.name }}</h4>
+      <p><strong>Email:</strong> {{ comment.email }}</p>
+      <p><strong>Contenu:</strong> {{ comment.body }}</p>
+    </div>
+  </div>
+  <div class="footer">
+    <p class="tag">#HTML #CSS </p>
+  </div>
+  </div>
+<!-- <div id="parallax-wrapper">
   <section>
+    <a [routerLink]="['/']">Retour</a>
     <div class="title">
       <hgroup>
-      <h1>Bienvenu dans le detail de nos articles</h1>
+        <h1>Bienvenu dans le detail de nos articles</h1>
       </hgroup>
     </div>
   </section>
@@ -14,8 +33,21 @@
       <h2>{{ article?.title }}</h2>
     </div>
   </section>
-  <div class="content-text">
-    <p><span class="first-letter red">T</span>
-      {{ article?.body }}</p>
+  <section>
+    <div class="content-text">
+      <p>
+        {{ article?.body }}
+      </p>
       <a [routerLink]="['/edit-article', article?.id]">Modifier</a>
-     </div>
+      <div class="line-break"></div>
+      <h3>Commentaires</h3>
+      <div *ngIf="comments.length === 0">Aucun commentaire disponible.</div>
+
+      <div *ngFor="let comment of comments">
+        <h4>Titre: {{ comment.name }}</h4>
+        <p><strong>Email:</strong> {{ comment.email }}</p>
+        <p><strong>Contenu:</strong> {{ comment.body }}</p>
+      </div>
+    </div>
+  </section>
+</div> -->
