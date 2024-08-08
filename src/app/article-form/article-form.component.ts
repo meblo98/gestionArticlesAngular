@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../article.service';
 import { Article } from '../article.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-article-form',
@@ -46,13 +47,25 @@ export class ArticleFormComponent implements OnInit {
       const article: Article = this.articleForm.value;
       if (this.isEditMode && this.articleId !== undefined) {
         this.articleService.updateArticle(this.articleId, article).subscribe(() => {
-          alert('Article updated successfully!');
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Article bien modifié',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.router.navigate(['/']);
         });
       } else {
         this.articleService.createArticle(article).subscribe(newArticle => {
-          alert('Article created successfully!');
-          this.router.navigate(['/']);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Article bien Ajouté',
+            showConfirmButton: false,
+            timer: 1500
+          });
+           this.router.navigate(['/']);
         });
       }
     }

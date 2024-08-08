@@ -1,26 +1,13 @@
-<!-- <a [routerLink]="['/new-article']">Nouvel article</a>
-<div *ngFor="let article of articles">
-  <h2>{{ article.title }}</h2>
-  <p>{{ article.body }}</p>
-  <button (click)="deleteArticle(article.id)">Supprimer</button>
-  <a [routerLink]="['/edit-article', article.id]">Modifier</a>
-  <a [routerLink]="['/article', article.id]">Voire</a>
-</div>
- -->
 
-<div class="article row">
-  <a [routerLink]="['/new-article']">Nouvel article</a>
-
-  <div class="container col-md-4" *ngFor="let article of articles">
-    <section class="intro"></section>
-
-      <div class="meta" >
-        <div class="meta__inner">
-          <h3>{{ article.title }}</h3>
-          <p>{{ article.body }} <a [routerLink]="['/article', article.id]">Voire</a>
-            <button (click)="article.id && deleteArticle(article.id)">Supprimer</button>          </p>
-        </div>
+<div class="container">
+  <a class="add" [routerLink]="['/new-article']">Nouvel article</a>
+  <div class="article row">
+    <div class="card"  *ngFor="let article of articles">
+      <div class="card-details">
+        <p class="text-title">{{ article.title | truncate: 10 }}</p>
+        <p class="text-body">{{ article.body  | truncate: 50}}</p>
       </div>
-  </div>
-
-
+      <button class="card-button"><a [routerLink]="['/article', article.id]">Voire</a></button>
+    </div>
+    </div>
+</div>
